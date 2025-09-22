@@ -1,38 +1,104 @@
 # Info
 
-This is a simple library for building projects using Bun.
+A collection of useful React hooks.
+
+# Contents
+
+- [useOutsideClick](#useoutsideclick)
+  - [Simple usage](#simple-usage)
+  - [`enabled` option](#with-enabled-option)
+  - [`exclude` option](#with-exclude-option)
 
 # Installation
 
 ```bash
-bun add -d @mirum7/bun-build
+bun add @mirum7/hooks
 ```
 
 # Usage
 
-Add `build.config.ts` to the root of your project:
+## `useOutsideClick()`
 
-```ts
-import { BuildConfig } from "@mirum7/bun-build";
+A hook that detects clicks outside of a specified element and triggers a callback function.
 
-const config: BuildConfig = {
-  // your config options here
+### Example
+
+#### Simple usage:
+
+```tsx
+import { useOutsideClick } from "@mirum7/hooks";
+
+const MyComponent = () => {
+  const ref = useRef<HTMLDivElement>(null);
+
+  useOutsideClick({
+    ref,
+    callback: () => {
+      console.log("Clicked outside!");
+    },
+  });
+
+  return <div ref={ref}>Click outside me!</div>;
 };
-
-export default config;
 ```
 
-Then, run the build command:
+#### With `enabled` option:
 
-```bash
-bunx bun-build
+```tsx
+import { useOutsideClick } from "@mirum7/hooks";
+
+const MyComponent = () => {
+  const ref = useRef<HTMLDivElement>(null);
+  const [isEnabled, setIsEnabled] = useState(true);
+
+  useOutsideClick({
+    ref,
+    callback: () => {
+      console.log("Clicked outside!");
+    },
+    enabled: isEnabled,
+  });
+
+  return (
+    <div>
+      <div ref={ref}>Click outside me!</div>
+
+      <button onClick={() => setIsEnabled((prev) => !prev)}>
+        {isEnabled ? "Disable" : "Enable"} Outside Click Detection
+      </button>
+    </div>
+  );
+};
 ```
 
-# Configuration Options
+#### With `exclude` option:
 
-Same as `BuildConfig` from [`bun`](https://bun.com/docs/bundler).
+```tsx
+import { useOutsideClick } from "@mirum7/hooks";
+import { useRef, useState } from "react";
 
-## but
+const MyComponent = () => {
+  const ref = useRef<HTMLDivElement>(null);
+  const excludeRef = useRef<HTMLButtonElement>(null);
+  const [isEnabled, setIsEnabled] = useState(true);
 
-- `entrypoints` - not required, default value - `package.json` `main` field
-- `outdir`- not required, default value -`dist`'
+  useOutsideClick({
+    ref,
+    callback: () => {
+      console.log("Clicked outside!");
+    },
+    enabled: isEnabled,
+    exclude: [excludeRef, "[data-ignore-outside-click]"],
+  });
+
+  return (
+    <div>
+      <div ref={ref}>Click outside me!</div>
+
+      <button ref={excludeRef}>
+        Clicking me won't trigger the outside click
+      </button>
+    </div>
+  );
+};
+```
