@@ -1,0 +1,46 @@
+{
+  "name": "@mirum7/hooks",
+  "version": "1.0.0",
+  "description": "A collection of useful React hooks.",
+  "module": "dist/index.js",
+  "main": "src/index.ts",
+  "type": "module",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "default": "./dist/index.js",
+      "types": "./types/index.d.ts"
+    },
+    "./package.json": "./package.json"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Mirum-7/hooks.git"
+  },
+  "private": false,
+  "scripts": {
+    "build": "bun-build && bunx --bun tsc",
+    "prepublishOnly": "bun run build"
+  },
+  "types": "types/index.d.ts",
+  "files": [
+    "types/**/*.d.ts",
+    "dist/index.js"
+  ],
+  "keywords": [
+    "bun",
+    "build",
+    "bundler",
+    "typescript"
+  ],
+  "author": "mirum7",
+  "license": "ISC",
+  "devDependencies": {
+    "@mirum7/bun-build": "^1.4.3",
+    "@types/bun": "latest"
+  },
+  "peerDependencies": {
+    "react": "^19.1.1",
+    "typescript": "^5"
+  }
+}
