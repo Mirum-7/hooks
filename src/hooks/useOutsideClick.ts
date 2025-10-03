@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 
-type Exclude = React.RefObject<HTMLElement> | string | Exclude[];
+type Exclude = React.RefObject<HTMLElement> | Element | string | Exclude[];
 
 interface Props {
   ref: React.RefObject<HTMLElement>;
@@ -16,6 +16,10 @@ const getExcludedElements = (exclude: Exclude): Element[] => {
 
   if (typeof exclude === "string") {
     return [...document.querySelectorAll(exclude)];
+  }
+
+  if (exclude instanceof Element) {
+    return [exclude];
   }
 
   if (typeof exclude === "object") {
