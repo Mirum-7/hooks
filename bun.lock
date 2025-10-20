@@ -4,7 +4,7 @@
     "": {
       "name": "@mirum7/bun-build",
       "devDependencies": {
-        "@mirum7/bun-build": "^1.4.3",
+        "@mirum7/bun-build": "^1.4.4",
         "@types/bun": "latest",
       },
       "peerDependencies": {
@@ -14,7 +14,7 @@
     },
   },
   "packages": {
-    "@mirum7/bun-build": ["@mirum7/bun-build@1.4.3", "", { "dependencies": { "bun-build": "link:bun-build" }, "peerDependencies": { "typescript": "^5" }, "bin": { "bun-build": "dist/index.js" } }, "sha512-oK91+ACIQhxDwQmN5KNvC82U3S65uMwFLcAgfVUZuOTfe9Wl3ptdYokpokctSKYa4LNTBhZ+Jy4ekO74GrvW/Q=="],
+    "@mirum7/bun-build": ["@mirum7/bun-build@1.4.4", "", { "dependencies": { "bun-build": "link:bun-build" }, "peerDependencies": { "typescript": "^5" }, "bin": { "bun-build": "dist/index.js" } }, "sha512-apGWCxCi+kYXNAEolD7lg2hgTEKntgJF+aNJWj3JhyciRamKGRQSGvNrqTj/gG9xEf6+o+Nx8OZCm/MBda4X9w=="],
 
     "@types/bun": ["@types/bun@1.2.21", "", { "dependencies": { "bun-types": "1.2.21" } }, "sha512-NiDnvEqmbfQ6dmZ3EeUO577s4P5bf4HCTXtI6trMc6f6RzirY5IrF3aIookuSpyslFzrnvv2lmEWv5HyC1X79A=="],
 
